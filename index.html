@@ -7,6 +7,7 @@
 </head>
 <body>
     <script>
+        console.log( `** LITERALS+DECONSTRUCTOR EXAMPLES **********************************************` )
         /* LESSON ON TEMPLATE LITERALS + DECONSTRUCTORS */
         const myNum = 55
         const myStr = "Boom"
@@ -68,7 +69,7 @@
 
     <script>
         /* REST, SPREAD OPERATORS -> ... */
-        console.log( `==================================================================` )
+        console.log( `** REST OPERATOR EXAMPLES **********************************************` )
 
         function addStuff( description, ...numSet ){
             console.log( `[addStuff] description='${description}'`, numSet );
@@ -116,11 +117,28 @@
         increaseUserAccessLevel( 25, user1, user2 )
         // should give user1.access = 70, user2.access = 70, user3.access = 45
         console.log( ` user-object access levels: `, user1, user2, user3 )
-        
+
         increaseUserAccessLevel( 25, user3 )
         // should all have acccess 70
         console.log( ` user-object access levels: `, user1, user2, user3 )
 
+        console.log( `** SPREAD OPERATOR EXAMPLES **********************************************` )
+        // used a lot to get individual elements from an object/array to re-assemble as a new object/array
+        let user4 = {
+            name: "Edmund",
+            access: 45
+        }
+        let enhancedProperties = {
+            superpower: "Flying",
+            stamina: 99,
+            hobbies: [ "Fighting bad guys", "Eating diamonds" ]
+        }
+        let healthStatus = {
+            hunger: 0.5,
+            pH: 7.2
+        }
+        let enhancedUser4 = { ...user4, ...enhancedProperties, ...healthStatus }
+        console.log( `- we have SPREAD each of the objects, and then re-combined them into a single enhancedUser4: `, enhancedUser4 )
     </script>
 </body>
 </html>
