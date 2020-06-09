@@ -78,8 +78,49 @@
 
             return description + (total) 
         }
-
         addStuff( "Adding 4 numbers: ", 4, 5, 7, 9, 345, 34, 23, 54 )
+
+
+        let user1 = {
+            name: "Moni",
+            access: 45,            
+        }
+        let user2 = {
+            name: "Eddi",
+            access: 45
+        }
+        let user3 = {
+            name: "Sakeeb",
+            access: 45
+        }
+        const groupAccess = { lounge: [], office: [] }
+        function addUsersToGroup( groupName, ...userSet ){
+            userSet.forEach( function( user ){
+                groupAccess[groupName].push( user.name )
+            })            
+        }
+        addUsersToGroup( "lounge", user1, user2 )
+        // should give groupAccess.lounge = [ "Moni", "Eddi" ]
+        console.log( ` access group for the 'lounge': `, groupAccess )
+        
+        addUsersToGroup( "lounge", user3 )
+        // should give groupAccess.lounge = [ "Moni", "Eddi", "Sakeeb" ]
+        console.log( ` access group for the 'lounge': `, groupAccess )
+
+
+        function increaseUserAccessLevel( increase, ...userSet ){
+            userSet.forEach( function( user ){
+                user.access += increase
+            })            
+        }        
+        increaseUserAccessLevel( 25, user1, user2 )
+        // should give user1.access = 70, user2.access = 70, user3.access = 45
+        console.log( ` user-object access levels: `, user1, user2, user3 )
+        
+        increaseUserAccessLevel( 25, user3 )
+        // should all have acccess 70
+        console.log( ` user-object access levels: `, user1, user2, user3 )
+
     </script>
 </body>
 </html>
