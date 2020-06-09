@@ -20,7 +20,10 @@
             name: "Fil",
             location: "Toronto",
             animalCnt: 0,
-            hobbies: [ "Sleeping", "Coding", "Reno" ]
+            hobbies: [ "Sleeping", "Coding", "Reno" ],
+            changeName: function( newName ){
+                this.name = newName
+            }
         }
 
         console.log( `the results: myNum=${myNum}  -  myStr=${myStr}  -  returnTime=${returnTime()}` )
@@ -28,6 +31,38 @@
         console.log( `Fils stats: name=${myUser.name}, `+
                      `animals=${myUser.animalCnt}, `+
                      `hobbies=${myUser.hobbies.join(';')}` )
+
+        myUser.changeName( { first: "Doug", last: "Moore" } )
+        // see first name
+        myUser.name.first
+
+        // DECONSTRUCTORS : first = Doug, last = Moore
+        let { first, last }= myUser.name
+
+        // you can explicitly define the NEW variable to be different than property
+        // this makes newFirst = "Doug"
+        let { first: newFirst }= myUser.name
+        console.log( ` .. myUser.names.first=${newFirst}` )
+
+        const api = {
+            data: { 
+                names: [ "ted", "james", "daniel" ],
+                locations: [ "Oslo", "Copenhaggen", "Sophia" ]
+            },
+            pagination: { 
+                limit: 10
+            }
+        }
+        
+        // extract array of names: [ "ted" ... ]
+        var names = api.data.names;
+        var { names } = api.data
+        console.log( `api result: names=${names}` )
+
+        // deep extraction for limit
+        // expecting 'names' to have the data.names, limit to have pagination.limit
+        let { data: { names: namesList }, pagination: { limit } } = api
+        console.log( `api result deep extraction: namesList=${namesList}, limit=${limit}` )
     </script>
 </body>
 </html>
