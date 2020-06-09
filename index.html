@@ -16,8 +16,18 @@
             return time;
         }
 
+        const myUser = {
+            name: "Fil",
+            location: "Toronto",
+            animalCnt: 0,
+            hobbies: [ "Sleeping", "Coding", "Reno" ]
+        }
+
         console.log( `the results: myNum=${myNum}  -  myStr=${myStr}  -  returnTime=${returnTime()}` )
 
+        console.log( `Fils stats: name=${myUser.name}, `+
+                     `animals=${myUser.animalCnt}, `+
+                     `hobbies=${myUser.hobbies.join(';')}` )
     </script>
 </body>
 </html>
