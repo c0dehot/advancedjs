@@ -7,6 +7,7 @@
 </head>
 <body>
     <script>
+        /* LESSON ON TEMPLATE LITERALS + DECONSTRUCTORS */
         const myNum = 55
         const myStr = "Boom"
 
@@ -63,6 +64,22 @@
         // expecting 'names' to have the data.names, limit to have pagination.limit
         let { data: { names: namesList }, pagination: { limit } } = api
         console.log( `api result deep extraction: namesList=${namesList}, limit=${limit}` )
+    </script>
+
+    <script>
+        /* REST, SPREAD OPERATORS -> ... */
+        console.log( `==================================================================` )
+
+        function addStuff( description, ...numSet ){
+            console.log( `[addStuff] description='${description}'`, numSet );
+            // it has gathered ALL the remaining parameters into numSet
+            let total = 0
+            numSet.forEach( function( num ){ total +=num } )
+
+            return description + (total) 
+        }
+
+        addStuff( "Adding 4 numbers: ", 4, 5, 7, 9, 345, 34, 23, 54 )
     </script>
 </body>
 </html>
