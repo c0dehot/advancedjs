@@ -137,8 +137,18 @@
             hunger: 0.5,
             pH: 7.2
         }
-        let enhancedUser4 = { ...user4, ...enhancedProperties, ...healthStatus }
+        let healthAfterBattle = {
+            hunger: 0.99
+        }
+
+        let enhancedUser4 = { ...user4, ...enhancedProperties, ...healthStatus, ...healthAfterBattle }
         console.log( `- we have SPREAD each of the objects, and then re-combined them into a single enhancedUser4: `, enhancedUser4 )
+        
+        let nameSet1 = [ "Anna", "Haley", "Damon", "Christine" ]
+        let nameSet2 = [ "Chet", "Avi", "Sadia" ]
+        let fullNameSet = [ ...nameSet1, ...nameSet2 ]  // nameSet1 + nameSet2
+        console.log( ` fullNameSet: `, fullNameSet )
+        
     </script>
 </body>
 </html>
