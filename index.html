@@ -167,7 +167,10 @@
                     setTimeout( 
                     function(){ 
                         console.log( `Our API result for: ${url}` )
-                        resolve( `API Result: ${url}` )
+                        if( Math.random()>0.5 ) 
+                            resolve( `API Result: ${url}` )
+                        else
+                            reject( `Sorry nothing for ${url}` )
                         },
                         timeout )
                     }
@@ -180,19 +183,58 @@
             console.log( `the result: ${num1}+${num2} = ${num1+num2}` ) // run line 3
 
             doApiCall( 'http1') // run line 4
-                        // result will come LATER
-            promisedApiCall( 'http2', 2000 ).then( 
-                function( result ){
-                    console.log( `[promisedApiCall.THEN] incoming result=${result} ... now processing this` )
-                }
-            )
-            console.log( `finished starting http1/http2 calls....` ) // run line 5
+            // result will come LATER
 
-            let result = await promisedApiCall( 'http3', 3000 )
+            try{
+                promisedApiCall( 'http2', 2000 ).then( 
+                    function( result ){
+                        console.log( `[promisedApiCall.THEN] incoming result=${result} ... now processing this` )
+                    }
+                )
+                console.log( `finished starting http1/http2 calls....` ) // run line 5
 
-            console.log( `finished completing http3 call` )
+                let result = await promisedApiCall( 'http3', 3000 )
+
+                console.log( `finished completing http3 call` )
+            } catch( e ){
+                console.log( `[Catch] sorry we had some problems!`, e )
+            }
         }
         mainApp()
+    </script>
+
+    <script>
+        console.log( `** CALLBACK EXAMPLES **********************************************` )
+        async function mainApp(){
+
+            function levelUp( name, location, callbackSuccess, callbackFailure=function(){} ){
+                console.log( `[levelUp] name=${name} location=${location}` );
+                setTimeout( function(){
+                    console.log( ` ... completed [levelUp]` )
+                    callbackSuccess();
+                }, 7000 )   
+            }
+
+            function levelUpSuccess(){
+                console.log( `[levelUpSuccess] ran` )
+            }
+
+            // CALLBACK
+            levelUp( "Fil", "Toronto", levelUpSuccess )
+
+            console.log( `continuing after levelUp` )
+
+            function promiseLevelUp( name, location ){
+                return new Promise( function( resolve, reject ){
+                    levelUp( name, location, resolve )
+                })
+            }
+
+            let result = await promiseLevelUp( "Fil", "Toronto" )
+            console.log( `finished promiseLevelUp...` )
+        }
+        mainApp()
+
     </script>
 </body>
 </html>
