@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // our original 
+        let originalUser = {
+            name: "Fil",
+            location: "Toronto",
+            hobbies: [ "Coding", "Sleeping", "Reno" ],
+            currentHobby: "",
+            accessLevel: 0,
+            changeHobby: function( hobbyIndex ){
+            this.currentHobby = this.hobbies[hobbyIndex]
+            console.log( `.. set currentHobby to : ${this.currentHobby}` )
+            },
+            changeName: function( newName ){
+            this.name = newName
+            console.log( `.. set new name to ${this.name} ` )
+            return this.name
+            },
+            increaseAccess: function( increase ){
+            this.accessLevel += increase 
+            return this.accessLevel 
+            }
+        }
+
+        // our constructor from the original user
+        function User( newName, newLocation, newHobbies ){
+            this.name = newName
+            this.location = newLocation
+            this.hobbies = newHobbies
+
+            this.currentHobby = ""
+            this.accessLevel = 0
+
+            this.changeHobby = function( hobbyIndex ){
+                this.currentHobby = this.hobbies[hobbyIndex]
+                console.log( `.. set currentHobby to : ${this.currentHobby}` )
+                }
+
+            this.changeName = function( newName ){
+                this.name = newName
+                console.log( `.. set new name to ${this.name} ` )
+                return this.name
+                }
+
+            this.increaseAccess = function( increase ){
+                this.accessLevel += increase 
+                return this.accessLevel 
+                }
+            }
+    </script>
+</body>
+</html>
