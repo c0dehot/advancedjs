@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const dog = {
+            raining: true,
+            noise: "Woof!",
+            makeNoise: function(){
+                console.log( `Dog says: ${this.noise}` )
+                return this.noise
+            }
+        }
+
+        const cat = {
+            raining: true,
+            noise: "Meow",
+            makeNoise: function(){
+                console.log( `Cat says: ${this.noise}` )
+                return this.noise
+            }
+        }
+
+        function massHysteria( animal1, animal2 ){
+            if( animal1.raining && animal2.raining ){
+                console.log( `The animals are going crazy` )
+            }
+        }
+
+
+    </script>
+</body>
+</html>
