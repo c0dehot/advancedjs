@@ -7,6 +7,7 @@
 </head>
 <body>
     <script>
+        // UNDERSTANDING CONSTRUCTORS : ES6 'CLASSES'
         // our original 
         let originalUser = {
             name: "Fil",
@@ -30,6 +31,8 @@
         }
 
         // our constructor from the original user
+        // First way of creating a constructor
+        if( 0 ){
         function User( newName, newLocation, newHobbies ){
             this.name = newName
             this.location = newLocation
@@ -41,17 +44,47 @@
             this.changeHobby = function( hobbyIndex ){
                 this.currentHobby = this.hobbies[hobbyIndex]
                 console.log( `.. set currentHobby to : ${this.currentHobby}` )
-                }
+            }
 
             this.changeName = function( newName ){
                 this.name = newName
                 console.log( `.. set new name to ${this.name} ` )
                 return this.name
-                }
+            }
 
             this.increaseAccess = function( increase ){
                 this.accessLevel += increase 
                 return this.accessLevel 
+            }
+        }
+        }
+
+
+            // class-based version of constructor
+            class User {
+                constructor( newName, newLocation, newHobbies ){
+                    this.name = newName
+                    this.location = newLocation
+                    this.hobbies = newHobbies
+
+                    this.currentHobby = ""
+                    this.accessLevel = 0
+                }
+
+                changeHobby( hobbyIndex ){
+                    this.currentHobby = this.hobbies[hobbyIndex]
+                    console.log( `.. set currentHobby to : ${this.currentHobby}` )
+                }
+
+                changeName( newName ){
+                    this.name = newName
+                    console.log( `.. set new name to ${this.name} ` )
+                    return this.name
+                }
+
+                increaseAccess( increase ){
+                    this.accessLevel += increase 
+                    return this.accessLevel 
                 }
             }
 
@@ -60,6 +93,20 @@
             const chet = new User( "Chet", "Toronto", [ "Bootcamp", "Fitness" ] )
             const samuel = new User( "Samuel", "Toronto", [ "Bootcamp" ] )
 
+            class Manager extends User {
+                constructor( newName, newLocation, newHobbies, title ){
+                    // super = runs the parent constructor
+                    super( newName, newLocation, newHobbies )
+                    this.title = title
+                }
+
+                changeTitle( newTitle ){
+                    this.title = newTitle
+                }
+            }
+
+            const sadia = new Manager( "Sadia", "Toronto", [ "Bootcamp" ], "Team Lead" )
+            
     </script>
 </body>
 </html>
