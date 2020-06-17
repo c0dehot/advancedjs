@@ -62,6 +62,6 @@ The above line if it called a valid API would put the JSON data into apiResult.
 
 ## API Calls ##
 API calls can be one of 4 types:
-GET - ex. a normal browser-based URL call is a GET request.
-POST - when you submit a form, it's a POST request (as you are POSTing bigger data)
-PUT/DELETE - these are like POST/GET, but for update and delete operations.
+- GET: ex. a normal browser-based URL call is a GET request.
+- POST: when you submit a form, it's a POST request (as you are POSTing bigger data)
+- PUT/DELETE: these are like POST/GET, but for update and delete operations.

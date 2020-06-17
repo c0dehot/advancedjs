@@ -24,29 +24,66 @@
                 return this.noise
             }
         }
-
-        debugger
         
-        function Animal( noise, raining, type='Cat' ){
-            this.raining = raining
-            this.noise = noise 
-            this.type = type
+        // function Animal( noise, raining, type='Cat' ){
+        //     this.raining = raining
+        //     this.noise = noise 
+        //     this.type = type
+
+        //     // original, as part of the actual constructor
+        //     this.makeNoise = function(){
+        //         console.log( `${this.type} says: ${this.noise}` )
+        //         return this.noise
+        //     }
+        // }
+
+        // Animal.prototype.makeNoise = function(){
+        //     console.log( `${this.type} says: ${this.noise}` )
+        //     return this.noise
+        // }
+
+
+        // new way to do it
+        class Animal {
+            constructor(noise, raining, type='Cat' ){
+                this.raining = raining
+                this.noise = noise 
+                this.type = type
+            }
 
             // original, as part of the actual constructor
-            // this.makeNoise = function(){
-            //     console.log( `${this.type} says: ${this.noise}` )
-            //     return this.noise
-            // }
-        }
-
-        // alternative, set up as a prototype
-        Animal.prototype.makeNoise = function(){
-            console.log( `${this.type} says: ${this.noise}` )
-            return this.noise
+            makeNoise(){
+                console.log( `${this.type} says: ${this.noise}` )
+                return this.noise
+            }
         }
 
         const cat = new Animal( 'Meow', true )
         const dog = new Animal( 'Woooff', true, 'Dog' )
+
+        
+        class Reptile extends Animal {
+            constructor(noise, raining){
+                super( noise, raining, 'Reptile')
+                this.sleeping = false
+            }
+
+            sleep(){
+                return this.sleeping ? `The ${this.type} is sleeping` : `The ${this.type} is NOT sleeping`
+            }
+        }
+
+        const lizzy = new Reptile( "sisiiii", false )
+
+
+
+
+
+        // extend all created 'Animals'
+        Animal.prototype.makeNewNoise = function(){
+            console.log( `${this.type} says: ${this.noise}` )
+            return this.noise
+        }
 
         function massHysteria( animal1, animal2 ){
             if( animal1.raining && animal2.raining ){
