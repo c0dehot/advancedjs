@@ -7,7 +7,47 @@ you to learn more.
 After learning how to structure HTML & CSS on a webpage (the "DOM" or document 
 object model), you want to learn how to wire up the javascript to interact with it.
 
+## Understanding Javascript (JS) ##
+Javascript is a programming language that allows you to manage a sequence of 
+actions on the browser (when a webpage loads), or when a user engages with 
+the webpage (event activity).
+
+It can also be used on the server-side (by Node) to run the API requests.
+
+FOr the scope of this learning, we are considering the client (browser) side.
+
+Javascript has 3 main concepts:
+- variables: a way to track stuff
+- functions: a way to organize sequence of actions into a labelled group
+- events: a way to engage with the browser
+
+### Variables ###
+There are 3 types of variables:
+- var: once assigned, they can be changed, and they are available anywhere in the function (even if declared further down in it)
+- const: 'constants' they cannot be re-assigned once set, so use these for things that don't change. They are available from the point they are declared
+- let: like 'var' but they are only available at the point they are declared, and within the nearest set of {} block they are in.
+
+### Functions ###
+Functions have a name usually, and are given inputs or parameters. Sometimes they return output, othertimes they perform the actions within themselves.
+
+For example:
+function saveUser( name, email ){
+    // will be given 2 local variables 'name' and 'email' that will have whatever values were passed in
+
+    // functions will encapsulate a set of actions done (possibly with the incoming parameters)
+
+    // they will then have side-effects (ex. write to a file, output to the DOM),
+
+    // and/or they will return some data
+    return [ `Welcome ${name}, your email is ${email}` ]
+}
+
 ## JS Interacting With DOM ##
+DOM Interaction is done with events. You can add event-listeners (ex an onclick) that when it detects a click on a
+DOM element, will look for accompanying javascript function code to run.
+
+DOM reading/writing is done by using the document-object, then a query-selector to choose something inside the DOM and and finally applying methods to it to read/write it.
+
 Simple example:
 <html>
 <body>
@@ -62,6 +102,9 @@ The above line if it called a valid API would put the JSON data into apiResult.
 
 ## API Calls ##
 API calls can be one of 4 types:
-- GET: ex. a normal browser-based URL call is a GET request.
+- GET: e`x. a normal browser-based URL call is a GET request.
 - POST: when you submit a form, it's a POST request (as you are POSTing bigger data)
 - PUT/DELETE: these are like POST/GET, but for update and delete operations.
+
+
+... TO BE CONTINUED ... please ask if there are topics you would like covered in particular
